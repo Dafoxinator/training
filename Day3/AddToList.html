@@ -1,0 +1,90 @@
+enter text into a field and add to a list underneath
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>To do List</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        ul li.check{
+            text-decoration: line-through;
+        }
+    </style>
+    <script>
+
+        function addTask() {
+            const input = document.getElementById("inputBox");
+            const list = document.getElementById("taskList");
+            const task = input.value.trim();
+
+            if (!task) {
+                return;
+            }
+
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <label>
+                <input type="checkbox">
+                <span>${task}</span>
+                </label>
+                <span class="edit-Button">Edit</span>
+                <span class="delete-Button">Delete</span>
+                `;
+                
+            list.appendChild(li);
+            input.value = "";
+
+            const checkbox = li.querySelector("input");
+            const editButton = li.querySelector(".edit-Button");
+            const taskSpan = li.querySelector("span");
+            const deleteButton = li.querySelector(".delete-Button");
+
+            
+            checkbox.addEventListener("click", function () {
+                li.classList.toggle("check", checkbox.check);
+            });
+
+            editButton.addEventListener("click", function () {
+                const update = prompt("Edit task:", taskSpan.textContent);
+                if (update !== null) {
+                    taskSpan.textContent = update;
+                }
+            });
+
+            deleteButton.addEventListener("click", function () {
+                li.remove();
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>To Do List</h1>
+    
+    <input type="text" id="inputBox"/>
+    <button onclick="addTask()">Add Item</button>
+    
+    <hr/>
+    <ul id="taskList">
+        
+    </ul>
+</body>
+</html>
+
