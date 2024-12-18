@@ -1,15 +1,15 @@
 import './App.css';
 import React from 'react';
 
-import Post from './post';
-import AxiosGetDemo from './AxiosGetDemo';
-import AxiosPost from './AxiosPost';
-import AxiosUpdate from './AxiosUpdate';
-import ToDoList from './ToDoList';
+import Post from './Post/post';
+import AxiosGetDemo from './Axios/AxiosGetDemo';
+import AxiosPost from './Axios/AxiosPost';
+import AxiosUpdate from './Axios/AxiosUpdate';
+import ToDoList from './List/ToDoList';
 import ClickCounter from './ClickCounter';
 import TextInput from './TextInput';
 import MyContext from './myContext';
-import AxiosDelete from './AxiosDelete';
+import AxiosDelete from './Axios/AxiosDelete';
 
 function App() {
   const sharedData='This is some shared Data';
